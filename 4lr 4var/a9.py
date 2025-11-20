@@ -13,8 +13,7 @@ def compose(*steps):
 
 pipeline = compose(square, cube, double)
 
-result = pipeline(3)
+print(pipeline(3))
 
-print(result)  
 
 
