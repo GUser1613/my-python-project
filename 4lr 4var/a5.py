@@ -13,6 +13,8 @@ class Counter:
         else:
             raise StopIteration 
         
-        
+
 for num in Counter(5):
     print(num)
+
+    

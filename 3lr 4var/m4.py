@@ -10,9 +10,6 @@ class Figure:
     def perimeter(self):
         pass
 
-    def __str__(self):
-        return f"{self.name}: площадь = {self.area():.2f}, периметр = {self.perimeter():.2f}"
-
 
 class Rectangle(Figure):
     def __init__(self, width, height):
@@ -40,6 +37,6 @@ class Circle(Figure):
 
 
 rectangle = Rectangle(3, 4)
-print(rectangle)
 circle = Circle(5)
-print(circle)
+print(f"{rectangle.name}: площадь = {rectangle.area():.2f}, периметр = {rectangle.perimeter():.2f}")
+print(f"{circle.name}: площадь = {circle.area():.2f}, периметр = {circle.perimeter():.2f}")

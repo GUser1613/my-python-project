@@ -1,7 +1,6 @@
 import json
 
 class Serializer:
-    @staticmethod
     def to_json(obj, filename):
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(obj, f, ensure_ascii=False, indent=4)
@@ -9,10 +8,9 @@ class Serializer:
 
 data = {
     "name": "Роман",
-    "age": 30,
-    "city": "Москва"
+    "age": 45,
+    "city": "Тверь"
 }
-
 
 Serializer.to_json(data, "person.json")
 

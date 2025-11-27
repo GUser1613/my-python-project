@@ -1,27 +1,25 @@
-import math
-from abc import ABC, abstractmethod
+from functools import reduce
+from operator import mul
 
-class Figure(ABC):
-    @abstractmethod
-    def area(self):
-        pass
+def compose(f, g):
+    return lambda x: f(g(x))
 
-    @abstractmethod
-    def perimeter(self):
-        pass
+def compose_many(*funcs):
+    return reduce(compose, funcs)
 
+def make_pipeline(func):
+    return lambda data: (func(x) for x in data)
 
-class Circle(Figure):
-    def __init__(self, radius):
-        self.radius = radius
+factorial = lambda n: reduce(mul, range(1, n+1), 1)
+funcex  = lambda x: x + 1
+funcex2 = lambda x: x + 2
 
-    def area(self):
-        return math.pi * self.radius ** 2
+pipeline_func = compose_many(funcex, funcex2, factorial)
 
-    def perimeter(self):
-        return 2 * math.pi * self.radius
-    
+pipeline = make_pipeline(pipeline_func)
 
-circle = Circle(5)
-print("Площадь:", circle.area())
-print("Периметр:", circle.perimeter())
+nums = range(1, 6)
+result = pipeline(nums)
+
+for value in result:
+    print(value)

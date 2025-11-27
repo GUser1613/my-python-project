@@ -5,6 +5,4 @@ double = lambda x: x * 2
 funcs = [square, cube, double]
 nums = range(1, 6)
 
-result = [list(map(f, nums)) for f in funcs]
-print(result)
-
+print([list(map(f, nums)) for f in funcs])

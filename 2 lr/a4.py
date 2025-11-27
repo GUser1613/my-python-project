@@ -1,14 +1,11 @@
-import matplotlib.pyplot as plt
-import numpy as np
+import json
 
-x = np.linspace(-10, 10, 200)
-y = x ** 2
+class Serializer:
+   # @staticmethod
+    def to_json(obj, filename):
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(obj, f, ensure_ascii=False, indent=4)
+        print("Объект успешно сериализован в", filename)
 
-plt.figure(figsize=(8, 6))
-plt.plot(x, y, label=r'$y = x^2$')
-plt.title('График функции y = x²')
-plt.xlabel('x')
-plt.ylabel('y')
-plt.grid(True)
-plt.legend()
-plt.show()
+# можно вызвать прямо через класс, без создания экземпляра
+Serializer.to_json({"name": "Иван", "age": 30}, "person.json")
